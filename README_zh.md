@@ -1,4 +1,4 @@
-stable-diffusion-webui 万能图像分割扩展
+# stable-diffusion-webui 万能图像分割扩展
 
 ## 安装
 
@@ -7,6 +7,8 @@ stable-diffusion-webui 万能图像分割扩展
 pip3 install opencv-python matplotlib onnx onnxruntime
 pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
 ```
+
+确保 pytorch>=2.0.0
 
 ### SAM权重
 
