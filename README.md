@@ -1,6 +1,17 @@
-An extension for stable-diffusion-webui that segment the image elements
+# An extension for stable-diffusion-webui that segment the image elements
+
+[中文版说明](https://github.com/Erickrus/stable-diffusion-webui-segment-anything/blob/main/README_zh.md)
 
 ## Installation
+
+### Install dependencies
+
+```shell
+pip3 install opencv-python matplotlib onnx onnxruntime
+pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
+```
+
+### Install extension from webui
 
 Go to `Extensions` Tab
 
@@ -12,12 +23,6 @@ Click `Install`
 
 Please restart webui, after the script is installed
 
-
-install dependencies
-```shell
-pip3 install opencv-python matplotlib onnx onnxruntime
-pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
-```
 
 
 
