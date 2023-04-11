@@ -23,6 +23,8 @@ Input `https://github.com/Erickrus/stable-diffusion-webui-segment-anything`
 
 Click `Install`
 
+![](installation.png)
+
 Please restart webui, after the script is installed
 
 
