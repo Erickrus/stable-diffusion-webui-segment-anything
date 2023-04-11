@@ -15,15 +15,9 @@ ensure pytorch>=2.0.0
 
 ### Install extension from webui
 
-Go to `Extensions` Tab
+Go to `Extensions` Tab, Click `Install from URL`, Input `https://github.com/Erickrus/stable-diffusion-webui-segment-anything`, Click `Install`
 
-Click `Install from URL`
-
-Input `https://github.com/Erickrus/stable-diffusion-webui-segment-anything`
-
-Click `Install`
-
-![](installation.png)
+<img src="installation.png" width="500px" />
 
 Please restart webui, after the script is installed
 
