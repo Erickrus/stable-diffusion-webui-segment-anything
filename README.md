@@ -11,6 +11,8 @@ pip3 install opencv-python matplotlib onnx onnxruntime
 pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
 ```
 
+ensure pytorch>=2.0.0
+
 ### Install extension from webui
 
 Go to `Extensions` Tab
