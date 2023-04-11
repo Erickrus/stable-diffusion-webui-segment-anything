@@ -30,18 +30,22 @@ from modules import script_callbacks, shared
 import gradio as gr
 import torch
 
-if not os.path.exists():
-    os.system("wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth")
-
-checkpoint = "sam_vit_h_4b8939.pth"
+model_dir = "models/sam/"
+checkpoint = model_dir + "sam_vit_h_4b8939.pth"
 model_type = "vit_h"
+if not os.path.exists(checkpoint):
+    os.mkdir(model_dir)
+    os.system("wget -O %s https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth" % model_dir)
+
+
+
 sam = sam_model_registry[model_type](checkpoint=checkpoint)
 
 
 
 def extract_onnx():
     import warnings
-    onnx_model_path = "sam_onnx_example.onnx"
+    onnx_model_path = model_dir + "sam_onnx_example.onnx"
     onnx_model = SamOnnxModel(sam, return_single_mask=True)
 
     dynamic_axes = {
@@ -78,7 +82,7 @@ def extract_onnx():
                 output_names=output_names,
                 dynamic_axes=dynamic_axes,
             )
-    onnx_model_quantized_path = "sam_onnx_quantized_example.onnx"
+    onnx_model_quantized_path = model_dir + "sam_onnx_quantized_example.onnx"
     quantize_dynamic(
         model_input=onnx_model_path,
         model_output=onnx_model_quantized_path,
@@ -88,12 +92,14 @@ def extract_onnx():
         weight_type=QuantType.QUInt8,
     )
 
-onnx_model_quantized_path = "sam_onnx_quantized_example.onnx"
-if os.path.exists(onnx_model_quantized_path):
+onnx_model_quantized_path = model_dir + "sam_onnx_quantized_example.onnx"
+if not os.path.exists(onnx_model_quantized_path):
     extract_onnx()
 onnx_model_path = onnx_model_quantized_path
 ort_session = onnxruntime.InferenceSession(onnx_model_path)
 
+sam.to(device='cuda')
+predictor = SamPredictor(sam)
 
 def find_input_points(mask):
     input_points = []
@@ -121,6 +127,7 @@ def segment_anything(im):
 
     input_point = np.array(input_points)
     input_label = np.ones(len(input_point)).astype(np.int)
+    print(input_point)
 
     onnx_coord = np.concatenate([input_point, np.array([[0.0, 0.0]])], axis=0)[None, :, :]
     onnx_label = np.concatenate([input_label, np.array([-1])], axis=0)[None, :].astype(np.float32)
@@ -167,6 +174,6 @@ def add_tab():
             outputs=[output_im],
         )
 
-    return [(ui, "segment_anything", "segment_anything")]
+    return [(ui, "Segment Anything", "segment_anything")]
 
 script_callbacks.on_ui_tabs(add_tab)
