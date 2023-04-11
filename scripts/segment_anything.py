@@ -35,7 +35,7 @@ checkpoint = model_dir + "sam_vit_h_4b8939.pth"
 model_type = "vit_h"
 if not os.path.exists(checkpoint):
     os.mkdir(model_dir)
-    os.system("wget -O %s https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth" % model_dir)
+    os.system("wget -O %s https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth" % checkpoint)
 
 
 
