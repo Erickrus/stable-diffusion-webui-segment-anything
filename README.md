@@ -23,7 +23,7 @@ pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
 
 ## How to use
 
-Upload the image to segment, draw tiny point(s) on the left side image and click segment button.
+Upload the image to segment, draw/click tiny point(s) on the left side image and click segment button.
 
 Please make sure the brush radius is around **5**. Dont use large radius as they wont work.
 
