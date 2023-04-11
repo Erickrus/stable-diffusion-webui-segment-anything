@@ -18,13 +18,9 @@ https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 
 ### 安装扩展
 
-转到 `Extensions` Tab
+转到 `Extensions` Tab, 点击 `Install from URL`, 输入 `https://github.com/Erickrus/stable-diffusion-webui-segment-anything`, 点击 `Install`
 
-点击 `Install from URL`
-
-输入 `https://github.com/Erickrus/stable-diffusion-webui-segment-anything`
-
-点击 `Install`
+<img src="installation.png" width="500px" />
 
 脚本安装完成后，请重启webui
 
