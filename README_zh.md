@@ -8,6 +8,12 @@ pip3 install opencv-python matplotlib onnx onnxruntime
 pip3 install 'git+https://github.com/facebookresearch/segment-anything.git'
 ```
 
+### SAM权重
+
+目前自动权重下载仅支持Linux/Mac, 使用的是wget。在Windows上可以将权重自行下载至models/sam/sam_vit_h_4b8939.pth
+
+https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+
 ### 安装扩展
 
 转到 `Extensions` Tab
